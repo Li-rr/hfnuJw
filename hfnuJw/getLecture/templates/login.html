@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合肥师范学院成绩查询</title>
+</head>
+<body>
+<p>请输入学号和密码</p>
+<form action="/login" method="post">
+    {% csrf_token %}
+    学号： <input type="text" name="user" value=""><br>
+    密码： <input type="password" name="passwd"value=""><br>
+    验证码：<input type="text" name="checkcode" value="">
+    <img src="http://jwxt.hfnu.edu.cn/(1aloxqa0g1ns0f45t3dht232)/CheckCode.aspx" name="imgCode"/><br>
+    <input type="submit" value="登录">
+</form>
+第一次提交!
+<!--<p>{{ user }}</p>-->
+<!--<p>{{ passwd }}</p>-->
+<!--<p>{{ code }}</p>-->
+</body>
+</html>

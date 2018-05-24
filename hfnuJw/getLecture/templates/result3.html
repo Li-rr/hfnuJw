@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>个人课表</title> 
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-3 col-xs-offset-2">
+                        <p class="navbar-text navbar-right ">查询结果如下</p>
+                    </div>
+                </div>
+            </div>
+</nav>	
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>课名</th>
+			<th>教师</th>
+			<th>上课地点</th>
+            <th>起止时间</th>
+            <th>周几</th>
+            <th>起止周数</th>
+		</tr>
+	</thead>
+	<tbody>
+        {% for lesson in lecture %}
+		<tr>
+                <td>{{lesson.1}}</td>   <!--课程名称-->
+                <td>{{lesson.2}}</td>   <!--教师-->
+                <td>{{lesson.3}}</td>   <!--上课地点-->
+                <td>第{{lesson.4}}到{{lesson.5}}节</td>   <!--开始节数-->
+                <td>{{lesson.6}}</td>   <!--周几-->
+                <td>{{lesson.7}}到{{lesson.8}}周</td><!--周数-->
+        </tr>
+        {% endfor %}
+	</tbody>
+</table>
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-3 col-xs-offset-2">
+                    <p class="navbar-text navbar-right ">By LRR ©2018-2019 All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </nav>	
+</body>
+</html>
