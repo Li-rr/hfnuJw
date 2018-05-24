@@ -21,6 +21,26 @@ class simpleSpider:
         self.studNumber = input("学号：")
         self.passwd = input("密码:")
     
+    def getImage(self):
+        imgUrl = "http://jwxt.hfnu.edu.cn/(1aloxqa0g1ns0f45t3dht232)/CheckCode.aspx"
+        try:
+            imgresponse = self.sess.get(imgUrl,stream=True)
+        except requests.exceptions.Timeout:
+            print("请求验证码超时")
+        image = imgresponse.content 
+        workDir = "/home/ubuntu/hfnuJw/hfnuJw/getLecture/static/images/"
+        print ("保存验证码到："+ workDir +"code.png"+ "\n")
+        try:
+            if os.path.exists(workDir+"code.png") == True:
+                os.remove(workDir+"code.png")  
+            with open(workDir+"code.png","wb") as jpg:
+                jpg.write(image) 
+        except IOError:
+            print("IO Error\n")
+        finally:
+            jpg.close()
+
+
     def setCheckCode(self):
         print("this is getImage")
         imgUrl = "http://jwxt.hfnu.edu.cn/(1aloxqa0g1ns0f45t3dht232)/CheckCode.aspx"
