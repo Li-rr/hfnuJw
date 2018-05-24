@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib import staticfiles
 
+
+from getLecture import views as getLecture_views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('^index/',getLecture_views.index),
+    path('^login/',getLecture_views.login),
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
