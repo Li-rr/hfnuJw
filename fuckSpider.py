@@ -30,7 +30,7 @@ class simpleSpider:
             print("请求验证码超时")
 
         image = imgresponse.content
-        workDir = 'E:\code\hfnuJw\getScore\static\images\\'
+        workDir = 'E:\code\hfnu_jwxt\\'
         print ("保存验证码到："+ workDir +"code.png"+ "\n")
 
         try:

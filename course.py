@@ -12,47 +12,85 @@ class Course:
         self.weekDay = ""
         self.studentId = "" 
 
-        self.build = ['博约楼','躬行楼','逸夫楼','履知楼']
+        self.build = ['博约楼','躬行楼','逸夫楼','履知楼','锦绣篮球场']
         self.lecture = []
 
     def getBuildIndex(self,str):
         index_build = -1
+        min_build = 9999
         for i in self.build:
             index_build = str.find(i)
+
             if index_build != -1:
-                break
-        return index_build   
+                if index_build < min_build:
+                    min_build = index_build
+                
+        #print("====",min_build)
+        if min_build == 9999:
+            min_build = -1
+        return min_build   
 
+    # def findNumber(self,str,index):
+    #     print("this is number")
+
+    #     index_end = 0
+
+    #     for i in range(index-3,index+3):
+    #         if i == len(str):
+    #             index_end = index
+    #             break
+    #         if str[i-1].isdigit() == True:
+    #             index_end = i 
+    #     # if str[index-1].isdigit() == True:
+    #     #     print(index,len(str),str[index-1])
+    #     #     index_end = index
+    #     # elif str[index].isdigit() ==True:
+    #     #     index_end = index+1
+    #     # if str[index].isdigit() == True and index+1 == len(str):
+    #     #     index_end = index+1
+    #     #     if index+2 == len(str) and str[index+1].isdigit() == True :
+    #     #         index_end = index+2
+    #     #         if index+3 == len(str) and str[index+2].isdigit() == True :
+    #     #             index_end = index+3
+        return index_end
     def getLesson(self,str):
-        index_start = -1
-        index_end = -1
-        temp = str.find("*")
-        if temp != -1:
-            str = str[:temp]
-            print(str)
-        index_start = self.getBuildIndex(str)    #此处为上课地点开始索引
-        index_end = index_start + 6         #此处一般为课程信息结尾
-        str_length = len(str)
+        while True:
+            #print("--",str)
+            temp = str.find("*")
+            if temp != -1:
+                str = str[:temp]
+            index_left = str.find("(")
+            index_right = str.find(")")
 
-        #print(index_start,index_start,str_length)
-        lesson = str[:index_end]
-        self.lecture.append(lesson)
-        #print(lesson)
-        # if index_end == str_length:
-        #     print("一节")
-        # else:
-        #     print(str[index_end:])
-        while index_end != str_length:
-            str = str[index_end:]
+            index_end = -1
+            if index_left != -1 and index_right != -1:
+                str = str[:index_left] + str[index_right+1:]
 
-            #print(str)
-
-            lesson = str[:index_end]
-            self.lecture.append(lesson)
-            
-            str_length = len(str)
             index_start = self.getBuildIndex(str)
-            index_end = index_start + 6       
+            #print(str[index_start],len(str))
+
+            temp_pe = str.find("场")
+            if temp_pe != -1:
+                index_end = temp_pe+1
+            elif temp_pe == -1:
+                if str[index_start+3].isalpha() == True:
+                    index_end = index_start+7       #此处一般为课程信息结尾,针对逸夫楼A206的情况
+                else:
+                    index_end = index_start + 6   
+
+            str_length = len(str)
+            lesson = str[:index_end]
+            #print("lesson:",lesson,index_start,index_end,len(str))
+            self.lecture.append(lesson) 
+            
+            str = str[index_end:]
+            #print("fuck:",str)
+            index_start = self.getBuildIndex(str)
+            #print("asd",index_start)
+            if index_start == -1:
+                break  
+
+  
 
     def findLessonName(self,str):
         index = str.find("周")
