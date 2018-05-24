@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <!-- saved from url=(0039)https://v3.bootcss.com/examples/signin/ -->
 <html lang="zh-CN">
@@ -50,7 +51,7 @@
       <div class="container header">
         <div class="navbar-header">
           <a class="navbar-brand" href="/index">
-            <img class="img-responsive" alt="HFNU" src="/static/images/hfnu2.png">
+            <img class="img-responsive" alt="HFNU" src="{% static "images/hfnu2.png" %}">
           </a>
           <p class="navbar-text text-tp">个人课表查询</p>
         </div>
@@ -80,7 +81,7 @@
         <input type="password" id="inputPassword" name="passwd" class="form-control" placeholder=" 密码" required="">
         <!-- <h2 for="inputCheckCode" class="str-only">验证码</h2> -->
         <div >
-        <img src="/static/images/code.png" class="img-responsive" alt="验证码">
+        <img src="{% static "images/code.png" %}" class="img-responsive" alt="验证码">
         <!-- <button type="button" class="btn btn-default navbar-btn" onclick="fresh">点击刷新验证码</button> -->
         <!-- <a href="http://127.0.0.1:8000/index">点击刷新验证码</a> -->
         </div>

@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 class Course:
 
     def __init__(self):
@@ -192,7 +196,7 @@ class Course:
             print("ErrorWeekday ")
             # return ""
 
-    def print(self):
+    def printAll(self):
         print(self.cId,self.cName,self.cTeacher,
             self.cLoc,self.cTimeStart,self.cTimeEnd,
             self.cWeekStart,self.cWeekEnd,self.weekDay,

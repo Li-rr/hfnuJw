@@ -85,7 +85,7 @@ def queryDataByStudentId(studentId):
         results = cursor.fetchall()
         for row in results:
             for i in row:
-                print(i,end=" ")
+                print(i),
             print(type(row))
         # print("result: ",results,type(results))
         print("result length: ",len(results))
@@ -110,7 +110,7 @@ def queryData():
         results = cursor.fetchall()   #fetchall():接收全部的返回结果行
         for row in results:
             for i in row:
-                print(i,end=' ')
+                print(i),
             print()
         
         print("result: ",results,type(results))
