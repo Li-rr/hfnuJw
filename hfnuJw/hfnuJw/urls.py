@@ -22,8 +22,8 @@ from django.contrib import staticfiles
 from getLecture import views as getLecture_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('^index/',getLecture_views.index),
-    path('^login/',getLecture_views.login),
+    path('index/',getLecture_views.index),
+    path('login/',getLecture_views.login),
 ]
 
 

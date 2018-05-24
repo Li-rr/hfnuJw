@@ -6,7 +6,7 @@ def getDataBase():
     connect = pymysql.connect(
         host='localhost',
         # port = 3306,    
-        user='lrr',
+        user='root',
         passwd='lrr1996429',
         db='persontable',
         charset='utf8')
@@ -26,8 +26,8 @@ def insertData(data):
         c_time_end,weekday,student_cid) VALUES('%s','%s','%s','%d','%d','%s','%s')    
         '''
     sql4 = '''
-    insert into course(c_name,c_teacher,c_loc,c_time_start,
-    c_time_end,weekday,student_cid,student_id) VALUES('%s','%s','%s','%d','%d','%s','%s','%s')    
+    insert into course(c_name,c_teacher,c_loc,c_time_start,c_time_end,weekday,
+    c_week_start,c_week_end,student_cid,student_id) VALUES('%s','%s','%s','%d','%d','%s','%s','%s','%s','%s')
     '''
     iD = data[0]
 
@@ -75,8 +75,9 @@ def queryDataById(student_cid):
 
 def queryDataByStudentId(studentId):
     flag = 0
+    results = ()
     connect = getDataBase()
-    sql = "select * from course where studentId = " + "%s"
+    sql = "select * from course where student_id = " + "%s"
 
     cursor = connect.cursor()
     try:

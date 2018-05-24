@@ -17,9 +17,12 @@ class simpleSpider:
         self.checkCode = ""
         self.sess = requests.session()
     
-    def setStudent(self,studNumber,passwd):
-        self.studNumber = input("学号：")
-        self.passwd = input("密码:")
+    def setStudent(self,studNumber,passwd,checkCode):
+        self.studNumber = studNumber
+        self.passwd = passwd
+        self.checkCode = checkCode
+        #self.studNumber = input("学号：")
+        #self.passwd = input("密码:")
     
     def getImage(self):
         imgUrl = "http://jwxt.hfnu.edu.cn/(1aloxqa0g1ns0f45t3dht232)/CheckCode.aspx"
